@@ -28,7 +28,9 @@
               "projects/terrain-mirage/src/assets"
             ],
             "styles": [
-              "projects/terrain-mirage/src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/terrain-mirage/src/styles.scss",
+              "node_modules/ol/ol.css"
             ],
             "scripts": []
           },
@@ -88,7 +90,9 @@
               "projects/terrain-mirage/src/assets"
             ],
             "styles": [
-              "projects/terrain-mirage/src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/terrain-mirage/src/styles.scss",
+              "node_modules/ol/ol.css"
             ],
             "scripts": []
           }
