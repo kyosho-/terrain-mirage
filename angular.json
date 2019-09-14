@@ -1,0 +1,124 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "terrain-mirage": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/terrain-mirage",
+      "sourceRoot": "projects/terrain-mirage/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/terrain-mirage",
+            "index": "projects/terrain-mirage/src/index.html",
+            "main": "projects/terrain-mirage/src/main.ts",
+            "polyfills": "projects/terrain-mirage/src/polyfills.ts",
+            "tsConfig": "projects/terrain-mirage/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/terrain-mirage/src/favicon.ico",
+              "projects/terrain-mirage/src/assets"
+            ],
+            "styles": [
+              "projects/terrain-mirage/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/terrain-mirage/src/environments/environment.ts",
+                  "with": "projects/terrain-mirage/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "terrain-mirage:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "terrain-mirage:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "terrain-mirage:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/terrain-mirage/src/test.ts",
+            "polyfills": "projects/terrain-mirage/src/polyfills.ts",
+            "tsConfig": "projects/terrain-mirage/tsconfig.spec.json",
+            "karmaConfig": "projects/terrain-mirage/karma.conf.js",
+            "assets": [
+              "projects/terrain-mirage/src/favicon.ico",
+              "projects/terrain-mirage/src/assets"
+            ],
+            "styles": [
+              "projects/terrain-mirage/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/terrain-mirage/tsconfig.app.json",
+              "projects/terrain-mirage/tsconfig.spec.json",
+              "projects/terrain-mirage/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/terrain-mirage/e2e/protractor.conf.js",
+            "devServerTarget": "terrain-mirage:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "terrain-mirage:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "terrain-mirage"
+}
