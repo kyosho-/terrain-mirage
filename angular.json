@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/terrain-mirage",
+            "outputPath": "../gh-pages/terrain-mirage",
             "index": "projects/terrain-mirage/src/index.html",
             "main": "projects/terrain-mirage/src/main.ts",
             "polyfills": "projects/terrain-mirage/src/polyfills.ts",
@@ -119,6 +119,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "terrain-mirage"
 }
