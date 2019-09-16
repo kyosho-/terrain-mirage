@@ -171,7 +171,10 @@ export class PlotterComponent implements OnInit {
           source: new OSM()
         })
       ],
-      controls: defaultControls({ attribution: false })
+      controls: defaultControls({
+        attribution: false,
+        zoom: true
+      })
         .extend([new Attribution({ collapsible: false })]),
       view: new View({
         projection: getProjection(Epsg.EPSG6677),
