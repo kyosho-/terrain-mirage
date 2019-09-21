@@ -240,6 +240,41 @@
           }
         }
       }
+    },
+    "gdaljs": {
+      "projectType": "library",
+      "root": "projects/gdaljs",
+      "sourceRoot": "projects/gdaljs/src",
+      "prefix": "gdal",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/gdaljs/tsconfig.lib.json",
+            "project": "projects/gdaljs/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/gdaljs/src/test.ts",
+            "tsConfig": "projects/gdaljs/tsconfig.spec.json",
+            "karmaConfig": "projects/gdaljs/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/gdaljs/tsconfig.lib.json",
+              "projects/gdaljs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "terrain-mirage"

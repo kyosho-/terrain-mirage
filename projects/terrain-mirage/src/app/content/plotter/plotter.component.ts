@@ -11,8 +11,8 @@ import { Coordinate } from 'ol/coordinate';
 import { defaults as defaultControls, Attribution } from 'ol/control';
 import { transform, get as getProjection } from 'ol/proj';
 import { MapService } from '../../common/map.service';
-import * as JSZip from 'jszip';
 import * as FileSaver from 'file-saver';
+import { RasterEnvi } from '../../common/gdal/envi/raster-envi';
 
 export enum Epsg {
   EPSG6668 = 'EPSG:6668',
@@ -83,28 +83,13 @@ export class PlotterComponent implements OnInit {
   }
 
   downloadDsm(event: MouseEvent) {
-    // console.log(event);
-    const zip = new JSZip();
-    // create a file
-    zip.file('hello.txt', 'Hello[p my)6cxsw2q');
-    // oops, cat on keyboard. Fixing !
-    zip.file('hello.txt', 'Hello World\n');
+    const envi = new RasterEnvi();
+    const name = 'test';
 
-    // create a file and a folder
-    zip.file('nested/hello.txt', 'Hello World\n');
-    // same as
-    zip.folder('nested').file('hello.txt', 'Hello World\n');
-
-    // ZIPファイルのblobデータ生成
-    from(zip.generateAsync<'blob'>({
-      type: 'blob',
-      platform: 'UNIX',
-      compression: 'DEFLATE',
-      compressionOptions: { level: 9 },
-    })).subscribe(
+    envi.zip(name).subscribe(
       (data: Blob) => {
         console.log(data);
-        FileSaver.saveAs(data, 'test.zip');
+        FileSaver.saveAs(data, `${name}.zip`);
       }
     );
   }
