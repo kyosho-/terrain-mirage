@@ -20,8 +20,17 @@ export class RasterEnvi {
         zip.file(`${name}.hdr`, HdrEncoder.encode(this.header));
 
         // image body
-        const length = 3243 * 3953;
+        const samples = 3243;
+        const lines = 3953;
+        const length = samples * lines;
         const array = new Float32Array(length);
+        const delta = 0.1;
+        // let value = 0;
+        for (let x = 0; x < samples; x++) {
+            for (let y = 0; y < lines; y++) {
+                array[x + y * samples] = (x + y * samples) * delta;
+            }
+        }
         const blob = new Blob([array], { type: 'application/octet-binary' });
         zip.file(name, blob);
 
